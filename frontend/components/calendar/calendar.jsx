@@ -1,7 +1,8 @@
 import React from 'react';
 import * as dateUtil from '../../util/date_util';
+import CalendarHeader from './calendar_header';
 
-class Calendar extends React.Component  {
+class Calendar extends React.Component {
   constructor() {
     super();
     this.date = new Date();
@@ -22,8 +23,6 @@ class Calendar extends React.Component  {
       }
     }
 
-    const monthName = dateUtil.months[month];
-    const monthYear = `${monthName} ${year}`;
     const days = dateUtil.days.map((day, index) => {
       return (<td key={ index }>{ day }</td>);
     });
@@ -48,7 +47,10 @@ class Calendar extends React.Component  {
 
     return (
       <tbody>
-        <tr><th>{ monthYear }</th></tr>
+        <tr><CalendarHeader
+          parentState={this.state}
+          setParentState={this.setState.bind(this)}
+          /></tr>
         <tr>{ days }</tr>
         { dates }
       </tbody>

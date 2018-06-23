@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import EventIndex from './event_index';
 
-const mapStatetoProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   const events = Object.values(state.entities.events).filter(event => {
     const eventDate = event.start_time.slice(8, 10);
     if (ownProps.date < 10) {
@@ -15,4 +15,9 @@ const mapStatetoProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStatetoProps)(EventIndex);
+// const mapDispatchToProps = dispatch => {
+//   return {
+//   };
+// };
+
+export default connect(mapStateToProps)(EventIndex);

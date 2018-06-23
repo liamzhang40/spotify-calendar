@@ -1,11 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import CalendarContainer from './calendar/calendar_container';
+import { HashRouter } from 'react-router-dom';
+import App from './app';
 
 const Root = ({ store }) => {
   return (
     <Provider store={ store }>
-      <CalendarContainer />
+      <HashRouter>
+        <App />
+      </HashRouter>
     </Provider>
   );
 };

@@ -1,10 +1,21 @@
 import React from 'react';
 import EventIndexItem from './event_index_item';
+import CreateEventFormContainer from './create_event_form_container';
 
 class EventIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      visible: false
+    };
+
+    this.toggleModal = this.toggleModal.bind(this);
   }
+
+  toggleModal() {
+    this.setState({visible: !this.state.visible});
+  }
+
 
   render() {
     //sorting event according to start_time
@@ -15,10 +26,16 @@ class EventIndex extends React.Component {
     );
 
     return (
-      <div>
-        <ul>
-          {events}
+      <div onClick={ this.toggleModal }>
+        { this.props.date }
+        <ul onClick={ e => e.stopPropagation() }>
+          { events }
         </ul>
+
+        { this.state.visible &&
+          <CreateEventFormContainer
+            toggleModal={ this.toggleModal }/>}
+
       </div>
     );
   }

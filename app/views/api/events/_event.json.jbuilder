@@ -1,1 +1,1 @@
-json.extract! event, :id, :start_time, :end_time, :description
+json.extract! event, :id, :user_id, :start_time, :end_time, :description

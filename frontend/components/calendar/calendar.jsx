@@ -1,16 +1,20 @@
 import React from 'react';
 import * as dateUtil from '../../util/date_util';
 import CalendarHeader from './calendar_header';
-import EventIndex from '../events/event_index';
+import EventIndexContainer from '../events/event_index_container';
 
 class Calendar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.date = new Date();
     this.state = {
       month: this.date.getMonth(),
       year: this.date.getFullYear()
     };
+  }
+
+  componentDidMount() {
+    this.props.fetchEvents();
   }
 
   generateTableBody() {
@@ -28,23 +32,25 @@ class Calendar extends React.Component {
     });
 
     const dates = [];
-    let day = 1;
+    let date = 1;
     for (let i = 0; i < 6; i++) {
-      if (day > monthLength) break;
+      if (date > monthLength) break;
       let datesRow = [];
       for (var j = 0; j < 7; j++) {
-        // start incrementing at first day of the month and preceding days
-        if (j === firstDay || day > 1) {
-          datesRow.push(<td key={ j }>{ day }<EventIndex /></td>);
-          day += 1;
+        // start incrementing at first date of the month and preceding dates
+        if (j === firstDay || date > 1) {
+          datesRow.push(<td key={ j }>
+                          { date }<EventIndexContainer date={ date }/>
+                        </td>);
+          date += 1;
         } else {
           datesRow.push(<td key={ j }></td>);
         }
 
-        if (j === 6 || day > monthLength) dates.push(<tr
+        if (j === 6 || date > monthLength) dates.push(<tr
           className="calendar-dates"
           key={ i }>{ datesRow }</tr>);
-        if (day > monthLength) break;
+        if (date > monthLength) break;
       }
     }
 

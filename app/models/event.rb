@@ -3,6 +3,7 @@
 # Table name: events
 #
 #  id          :bigint(8)        not null, primary key
+#  user_id     :integer          not null
 #  start_time  :datetime         not null
 #  end_time    :datetime         not null
 #  description :text

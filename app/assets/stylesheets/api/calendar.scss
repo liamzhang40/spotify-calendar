@@ -2,9 +2,14 @@ table {
   margin: 0 auto;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 td {
   width: 180px;
-  text-align: center;
   border: 1px solid black;
 }
 
@@ -20,9 +25,26 @@ th {
   font-size: 20px;
 }
 
+.calendar-days td {
+  text-align: center;
+}
+
 .calendar-dates td {
   font-size: 15px;
-  height: 140px;
+}
+
+.calendar-dates td>div {
+  height: 110px;
+  overflow: auto;
+}
+
+.calendar-dates td li {
+  margin: 5px 0;
+  padding: 0 5px;
+}
+
+.calendar-dates td li>div {
+  border-bottom: 1px dashed black;
 }
 
 .switch-button:hover {

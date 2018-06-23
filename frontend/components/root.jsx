@@ -1,9 +1,12 @@
 import React from 'react';
-import Calendar from './calendar/calendar';
+import { Provider } from 'react-redux';
+import CalendarContainer from './calendar/calendar_container';
 
-const Root = () => {
+const Root = ({ store }) => {
   return (
-    <Calendar />
+    <Provider store={ store }>
+      <CalendarContainer />
+    </Provider>
   );
 };
 

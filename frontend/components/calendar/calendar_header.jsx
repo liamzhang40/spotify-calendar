@@ -18,7 +18,6 @@ const CalendarHeader = ({ parentState, setParentState }) => {
         newYear = year - 1;
         newMonth = 11;
       }
-      console.log(newMonth)
       setParentState({
         month: newMonth,
         year: newYear

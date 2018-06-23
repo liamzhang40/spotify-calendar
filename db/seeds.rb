@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Event.destroy_all
+
+
+30.times do
+  start_time = Faker::Time.between(Date.today.at_beginning_of_month, Date.today.end_of_month)
+  end_time = Faker::Time.between(start_time.beginning_of_day, start_time.end_of_day)
+  Event.create!(
+    start_time: start_time,
+    end_time: end_time,
+    description: Faker::LeagueOfLegends.quote
+  )
+end

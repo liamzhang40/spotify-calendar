@@ -1,7 +1,28 @@
+table {
+  margin: 0 auto;
+}
+
 td {
   width: 180px;
   text-align: center;
   border: 1px solid black;
+}
+
+th {
+  font-size: 30px;
+}
+
+.calendar-header-content {
+  margin: 0 20px;
+}
+
+.calendar-days {
+  font-size: 20px;
+}
+
+.calendar-dates td {
+  font-size: 15px;
+  height: 140px;
 }
 
 .switch-button:hover {

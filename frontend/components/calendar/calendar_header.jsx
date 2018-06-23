@@ -28,10 +28,10 @@ const CalendarHeader = ({ parentState, setParentState }) => {
 
 
   return (
-    <th>
+    <th colSpan={7}>
       <span className="switch-button"
         onClick={handleClick(-1)}>◀︎</span>
-      {monthYear}
+      <span className="calendar-header-content">{monthYear}</span>
       <span className="switch-button"
         onClick={handleClick(1)}>►</span>
     </th>

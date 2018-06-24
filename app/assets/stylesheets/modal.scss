@@ -8,6 +8,10 @@
   z-index: 10;
 }
 
+.modal-background:hover {
+  cursor: default;
+}
+
 .modal-child {
   position: absolute;
   top: 50%;
@@ -33,7 +37,7 @@
   font-size: 30px;
 }
 
-.close:hover {
+button:hover {
   cursor: pointer;
 }
 
@@ -52,4 +56,9 @@
 
 .event-form h2 {
   margin: 0;
+}
+
+.delete-event-button {
+  display: block;
+  margin: 5px auto;
 }

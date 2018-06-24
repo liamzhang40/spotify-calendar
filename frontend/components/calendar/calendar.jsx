@@ -18,7 +18,6 @@ class Calendar extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    // console.log(nextState)
     this.props.fetchEvents(nextState.year, nextState.month);
   }
 
@@ -62,8 +61,12 @@ class Calendar extends React.Component {
       }
     }
 
+    const { first_name, last_name } = this.props.currentUser;
     return (
       <tbody>
+        <tr><th>
+          {`User: ${first_name} ${last_name}`}
+        </th></tr>
         <tr className="calendar-header"><CalendarHeader
           parentState={this.state}
           setParentState={this.setState.bind(this)}

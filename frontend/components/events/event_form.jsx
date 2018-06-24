@@ -6,6 +6,7 @@ class EventForm extends React.Component {
     this.state = this.props.event;
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   update(field) {
@@ -24,7 +25,11 @@ class EventForm extends React.Component {
     });
 
     processForm(event).then(() => toggleModal());
-    console.log(event);
+  }
+
+  handleClick() {
+    const { removeEvent, toggleModal } = this.props;
+    removeEvent(this.state.id);
   }
 
   generateTimeOptions() {
@@ -87,7 +92,11 @@ class EventForm extends React.Component {
               <button>Submit</button>
             </form>
             { formType === "Edit Event" &&
-              <button onClick={ () => this.props.removeEvent(this.state.id) }>Delete</button>}
+              <button
+                className="delete-event-button"
+                onClick={ this.handleClick }>
+                Delete
+              </button>}
           </div>
 
         </div>

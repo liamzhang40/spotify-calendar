@@ -13,7 +13,7 @@ td {
   border: 1px solid black;
 }
 
-th {
+.calendar-header th {
   font-size: 30px;
 }
 
@@ -62,4 +62,8 @@ th {
 
 .switch-button:hover {
   cursor: pointer;
+}
+
+.user-th {
+
 }

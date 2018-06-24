@@ -47,7 +47,7 @@ class EventForm extends React.Component {
   }
 
   render() {
-    const { toggleModal } = this.props,
+    const { toggleModal, formType } = this.props,
           { start_time, end_time, description } = this.state,
           timeOptions = this.generateTimeOptions();
 
@@ -58,6 +58,7 @@ class EventForm extends React.Component {
 
           <div className="event-form">
             <form onSubmit={this.handleSubmit}>
+              <h2>{formType}</h2>
               <label>Start Time
                 <select
                   size="4"
@@ -85,6 +86,8 @@ class EventForm extends React.Component {
 
               <button>Submit</button>
             </form>
+            { formType === "Edit Event" &&
+              <button onClick={ () => this.props.removeEvent(this.state.id) }>Delete</button>}
           </div>
 
         </div>

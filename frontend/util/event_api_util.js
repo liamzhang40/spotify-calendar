@@ -25,6 +25,6 @@ export const updateEvent = event => {
 export const removeEvent = eventId => {
   return $.ajax({
     method: 'DELETE',
-    url: `api/events/${event.id}`,
+    url: `api/events/${eventId}`,
   });
 };

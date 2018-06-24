@@ -8,7 +8,8 @@ const mapStateToProps = state => {
       start_time: '00:00',
       end_time: '00:00',
       description: ''
-    }
+    },
+    formType: "Create Event"
   };
 };
 

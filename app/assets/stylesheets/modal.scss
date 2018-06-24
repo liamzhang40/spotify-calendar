@@ -23,3 +23,33 @@
   justify-content: center;
   color: #646f79;
 }
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  border: 0;
+  background-color: inherit;
+  font-size: 30px;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+.event-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-form label {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-form h2 {
+  margin: 0;
+}

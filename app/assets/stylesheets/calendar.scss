@@ -36,11 +36,24 @@ th {
 .calendar-dates td>div {
   height: 120px;
   overflow: auto;
+  transition: 0.3s;
+}
+
+.calendar-dates td>div:hover {
+  background-color: blue;
 }
 
 .calendar-dates td li {
   margin: 5px 0;
   padding: 0 5px;
+}
+
+.calendar-dates td li:hover {
+  cursor: pointer;
+}
+
+.calendar-dates td ul {
+  background-color: white;
 }
 
 .calendar-dates td li>div {

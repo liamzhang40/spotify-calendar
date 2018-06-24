@@ -1,15 +1,34 @@
 import React from 'react';
+import UpdateEventFormContainer from './update_event_form_container';
 
 class EventIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      visible: false
+    };
+
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal() {
+    this.setState({visible: !this.state.visible});
   }
 
   render() {
-    const { event } = this.props;
-    const timeRange = `${event.start_time.slice(11, 19)} - ${event.end_time.slice(11, 19)}`;
+    const { year, month, date, event } = this.props;
+    const timeRange = `${event.start_time.slice(11, 16)} -- ${event.end_time.slice(11, 16)}`;
     return (
-      <div>{timeRange}</div>
+      <div onClick={ this.toggleModal }>
+        { timeRange }
+        { this.state.visible &&
+          <UpdateEventFormContainer
+            year={ year }
+            month={ month }
+            date={ date }
+            event={ event }
+            toggleModal={ this.toggleModal }/>}
+      </div>
     );
   }
 }

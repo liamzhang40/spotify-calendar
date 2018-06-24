@@ -23,7 +23,11 @@ class EventIndex extends React.Component {
     const events = this.props.events.sort((event1, event2) =>
       event1.start_time.slice(11, 19) > event2.start_time.slice(11, 19)
     ).map((event, idx) =>
-      <li key={ idx }><EventIndexItem event={ event } /></li>
+      <li key={ idx }><EventIndexItem
+        year={ year }
+        month={ month }
+        date={ date }
+        event={ event } /></li>
     );
 
     return (

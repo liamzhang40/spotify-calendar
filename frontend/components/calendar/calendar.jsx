@@ -14,12 +14,12 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchEvents();
+    this.props.fetchEvents(this.state.year, this.state.month);
   }
 
   componentWillUpdate(nextProps, nextState) {
-    // will fetch events again for preceding rendered month
-
+    // console.log(nextState)
+    this.props.fetchEvents(nextState.year, nextState.month);
   }
 
   generateTableBody() {
@@ -45,7 +45,10 @@ class Calendar extends React.Component {
         // start incrementing at first date of the month and preceding dates
         if (j === firstDay || date > 1) {
           datesRow.push(<td key={ j }>
-                          <EventIndexContainer date={ date }/>
+                          <EventIndexContainer
+                            year={ year }
+                            month={ month }
+                            date={ date }/>
                         </td>);
           date += 1;
         } else {

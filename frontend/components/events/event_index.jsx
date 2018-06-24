@@ -19,6 +19,7 @@ class EventIndex extends React.Component {
 
   render() {
     //sorting event according to start_time
+    const { year, month, date } = this.props;
     const events = this.props.events.sort((event1, event2) =>
       event1.start_time.slice(11, 19) > event2.start_time.slice(11, 19)
     ).map((event, idx) =>
@@ -34,6 +35,9 @@ class EventIndex extends React.Component {
 
         { this.state.visible &&
           <CreateEventFormContainer
+            year={ year }
+            month={ month }
+            date={ date }
             toggleModal={ this.toggleModal }/>}
 
       </div>

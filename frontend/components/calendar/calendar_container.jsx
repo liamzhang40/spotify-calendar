@@ -4,7 +4,7 @@ import Calendar from './calendar';
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchEvents: month => dispatch(fetchEvents(month))
+    fetchEvents: (year, month) => dispatch(fetchEvents(year, month))
   };
 };
 

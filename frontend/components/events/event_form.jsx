@@ -16,6 +16,15 @@ class EventForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const { start_time, end_time } = this.state;
+    const { year, month, date, processForm, toggleModal } = this.props;
+    const event = Object.assign({}, this.state, {
+      start_time: `${year}-${month + 1}-${date}T${start_time.slice(0, 2)}:${start_time.slice(3, 5)}`,
+      end_time: `${year}-${month + 1}-${date}T${end_time.slice(0, 2)}:${end_time.slice(3, 5)}`
+    });
+
+    processForm(event).then(() => toggleModal());
+    console.log(event);
   }
 
   generateTimeOptions() {
@@ -51,17 +60,19 @@ class EventForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <label>Start Time
                 <select
+                  size="4"
                   onChange={ this.update("start_time") }
                   value={ start_time }>
-                  {timeOptions}
+                  { timeOptions }
                 </select>
               </label>
 
               <label>End Time
                 <select
+                  size="4"
                   onChange={ this.update("end_time") }
                   value={ end_time }>
-                  {timeOptions}
+                  { timeOptions }
                 </select>
               </label>
 

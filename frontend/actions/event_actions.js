@@ -32,9 +32,9 @@ const receiveErrors = errors => {
   };
 };
 
-export const fetchEvents = month => {
+export const fetchEvents = (year, month) => {
   return dispatch => {
-    return eventAPIUtil.fetchEvents(month).then(
+    return eventAPIUtil.fetchEvents(year, month).then(
       events => {
         return dispatch(receiveEvents(events));
       }

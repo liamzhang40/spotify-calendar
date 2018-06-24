@@ -5,8 +5,8 @@ import { createEvent } from '../../actions/event_actions';
 const mapStateToProps = state => {
   return {
     event: {
-      start_time: '',
-      end_time: '',
+      start_time: '00:00',
+      end_time: '00:00',
       description: ''
     }
   };

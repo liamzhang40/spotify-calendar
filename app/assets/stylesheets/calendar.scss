@@ -17,15 +17,22 @@ td {
   font-size: 30px;
 }
 
-.calendar-header-content {
-  margin: 0 20px;
+.calendar-header div {
+  display: inline-block;
 }
 
-.calendar-days {
+.calendar-header-content {
+  margin: 0 20px;
+  width: 300px;
+}
+
+.calendar-days,
+.week-days {
   font-size: 20px;
 }
 
-.calendar-days td {
+.calendar-days td,
+.week-days td {
   text-align: center;
 }
 

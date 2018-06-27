@@ -1,58 +1,57 @@
 import React from 'react';
 import * as dateUtil from '../../util/date_util';
 import CalendarHeader from '../calendar/calendar_header';
+import { withRouter } from 'react-router-dom';
 
 class WeekView extends React.Component {
   constructor() {
     super();
     this.date = new Date();
+    let month = this.date.getMonth();
+    let firstDateOfWeek = this.date.getDate() - this.date.getDay();
+    if (this.date.getDate() <= this.date.getDay()) {
+      month -= 1;
+      firstDateOfWeek += dateUtil.daysInMonth[month];
+    }
 
     this.state = {
       year: this.date.getFullYear(),
-      month: this.date.getMonth()
+      month,
+      firstDateOfWeek
     };
   }
 
   generateTableBody() {
-    const { month, year } = this.state;
-    let firstDateOfWeek = this.date.getDate() > this.date.getDay() ?
-    this.date.getDate() - this.date.getDay() :
-    dateUtil.daysInMonth[month - 1] + (this.date.getDate() - this.date.getDay());
+    const { month, year, firstDateOfWeek } = this.state;
+    let dateOfWeek = firstDateOfWeek;
 
     const days = dateUtil.days.map((day, index) => {
-      const dateOfWeek = firstDateOfWeek;
-      if (this.date.getDate() > this.date.getDay()) {
-        if (firstDateOfWeek <= dateUtil.daysInMonth[month]) {
-          firstDateOfWeek += 1;
+      const currentDate = dateOfWeek;
+        if (dateOfWeek <= dateUtil.daysInMonth[month]) {
+          dateOfWeek += 1;
           return  (<td key={ index }>
-            { `${day.slice(0, 3)} ${dateUtil.months[month]} ${dateOfWeek}` }
+            { `${day.slice(0, 3)} ${dateUtil.months[month]} ${currentDate}` }
           </td>);
         } else {
-          firstDateOfWeek += 1;
+          dateOfWeek += 1;
           return  (<td key={ index }>
-            { `${day.slice(0, 3)} ${dateUtil.months[month + 1]} ${dateOfWeek % dateUtil.daysInMonth[month]}` }
+            { `${day.slice(0, 3)} ${dateUtil.months[month + 1]} ${currentDate % dateUtil.daysInMonth[month]}` }
           </td>);
         }
-      } else {
-        if (firstDateOfWeek <= dateUtil.daysInMonth[month - 1]) {
-          firstDateOfWeek += 1;
-          return  (<td key={ index }>
-            { `${day.slice(0, 3)} ${dateUtil.months[month - 1]} ${dateOfWeek}` }
-          </td>);
-        } else {
-          firstDateOfWeek += 1;
-          return  (<td key={ index }>
-            { `${day.slice(0, 3)} ${dateUtil.months[month]} ${dateOfWeek % dateUtil.daysInMonth[month - 1]}` }
-          </td>);
-        }
-      }
     });
 
     return (
       <tbody>
+        <tr>
+          <th colSpan={6}></th>
+          <th>
+            <button onClick={ () => this.props.history.push('/')}>Calendar View</button>
+          </th>
+        </tr>
         <tr className="calendar-header"><CalendarHeader
           parentState={this.state}
           setParentState={this.setState.bind(this)}
+          view="week-view"
           /></tr>
         <tr className="week-days">{ days }</tr>
       </tbody>
@@ -68,4 +67,4 @@ class WeekView extends React.Component {
   }
 }
 
-export default WeekView;
+export default withRouter(WeekView);

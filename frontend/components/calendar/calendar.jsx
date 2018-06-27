@@ -60,16 +60,18 @@ class Calendar extends React.Component {
       }
     }
 
-    const { first_name, last_name } = this.props.currentUser;
     return (
       <tbody>
-        <tr><th>
-          {`User: ${first_name} ${last_name}`}
-        </th></tr>
+        <tr>
+          <th colSpan={6}></th>
+          <th>
+            <button onClick={ () => this.props.history.push('/week')}>Week View</button>
+          </th>
+        </tr>
         <tr className="calendar-header"><CalendarHeader
           parentState={this.state}
           setParentState={this.setState.bind(this)}
-          /></tr>
+          view="calendar-view"/></tr>
         <tr className="calendar-days">{ days }</tr>
         { dates }
       </tbody>

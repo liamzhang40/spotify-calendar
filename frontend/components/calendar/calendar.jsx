@@ -7,9 +7,10 @@ class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.date = new Date();
+
     this.state = {
-      month: this.date.getMonth(),
-      year: this.date.getFullYear()
+      year: this.date.getFullYear(),
+      month: this.date.getMonth()
     };
   }
 
@@ -23,7 +24,7 @@ class Calendar extends React.Component {
 
   generateTableBody() {
     const { month, year } = this.state;
-    const firstDay = new Date(year, month).getDay();
+    const firstDayOfMonth = new Date(year, month).getDay();
     let monthLength = dateUtil.daysInMonth[month];
     if (month === 1) {
       if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
@@ -31,9 +32,7 @@ class Calendar extends React.Component {
       }
     }
 
-    const days = dateUtil.days.map((day, index) => {
-      return (<td key={ index }>{ day }</td>);
-    });
+    const days = dateUtil.days.map((day, index) => <td key={ index }>{ day }</td>);
 
     const dates = [];
     let date = 1;
@@ -42,7 +41,7 @@ class Calendar extends React.Component {
       let datesRow = [];
       for (var j = 0; j < 7; j++) {
         // start incrementing at first date of the month and preceding dates
-        if (j === firstDay || date > 1) {
+        if (j === firstDayOfMonth || date > 1) {
           datesRow.push(<td key={ j }>
                           <EventIndexContainer
                             year={ year }

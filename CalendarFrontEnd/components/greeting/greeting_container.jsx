@@ -12,7 +12,7 @@ const Greeting = ({ currentUser }) => {
   const { first_name, last_name } = currentUser
   return (
     <div>
-      { `User: ${first_name} ${last_name}` }
+      { `Bootstrapped User: ${first_name} ${last_name}` }
     </div>
   )
 };

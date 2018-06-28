@@ -23,7 +23,7 @@ var path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "./frontend/main.jsx",
+  entry: "./CalendarFrontEnd/main.jsx",
   output: {
     path: path.resolve(__dirname, "app", "assets", "javascripts"),
     filename: "bundle.js"

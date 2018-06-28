@@ -1,6 +1,6 @@
 import * as eventAPIUtil from '../util/event_api_util';
 export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
-export const RECEIVE_EVENT = 'RECEIVE_EVENT';
+export const RECEIVE_ADDITIONAL_EVENTS = 'RECEIVE_ADDITIONAL_EVENTS';
 export const REMOVE_EVENT = 'REMOVE_EVENT';
 export const RECEIVE_EVENT_ERRORS = 'RECEIVE_EVENT_ERRORS';
 
@@ -11,10 +11,10 @@ const receiveEvents = events => {
   };
 };
 
-const receiveEvent = event => {
+const receiveAdditionalEvents = events => {
   return {
-    type: RECEIVE_EVENT,
-    event
+    type: RECEIVE_ADDITIONAL_EVENTS,
+    events
   };
 };
 
@@ -42,15 +42,15 @@ export const fetchEvents = (year, month) => {
   };
 };
 
-// export const fetchEvent = eventId => {
-//   return dispatch => {
-//     return eventAPIUtil.fetchEvent(eventId).then(
-//       event => {
-//         return dispatch(receiveEvent(event));
-//       }
-//     );
-//   };
-// };
+export const fetchAdditionalEvent = (year, month) => {
+  return dispatch => {
+    return eventAPIUtil.fetchEvent(year, month).then(
+      events => {
+        return dispatch(receiveAdditionalEvents(events));
+      }
+    );
+  };
+};
 
 export const createEvent = event => {
   return dispatch => {

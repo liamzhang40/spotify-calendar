@@ -27,9 +27,9 @@ class WeekView extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (nextState.year !== this.state.year || nextState.month !== this.state.month) {
+    // fetch next month's events as week view changes between month to month
+    if (nextState.month !== this.state.month) {
       this.props.fetchAdditionalEvents(nextState.year, nextState.month);
-      // console.log(this.props.fetchAdditionalEvents);
     }
   }
 

@@ -74,7 +74,7 @@ class EventIndex extends React.Component {
             month={ month }
             date={ date }
             event={ event }
-            view={view}/></li>;
+            view={ view }/></li>;
         });
 
         return (

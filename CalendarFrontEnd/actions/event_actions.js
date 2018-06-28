@@ -50,9 +50,9 @@ export const fetchEvents = (year, month) => {
   };
 };
 
-export const fetchAdditionalEvent = (year, month) => {
+export const fetchAdditionalEvents = (year, month) => {
   return dispatch => {
-    return eventAPIUtil.fetchEvent(year, month).then(
+    return eventAPIUtil.fetchEvents(year, month).then(
       events => {
         return dispatch(receiveAdditionalEvents(events));
       }

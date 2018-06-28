@@ -60,7 +60,7 @@ const CalendarHeader = ({ parentState, setParentState, view }) => {
         }
       }
       return (
-        <th colSpan={7}>
+        <th colSpan={8}>
           <div className="switch-button" onClick={switchWeek(-7)}>◀︎</div>
           <div className="calendar-header-content">{monthYear}</div>
           <div className="switch-button" onClick={switchWeek(7)}>►</div>
@@ -68,7 +68,7 @@ const CalendarHeader = ({ parentState, setParentState, view }) => {
       );
     case "day-view" :
     default:
-      return
+      return;
   }
 
 };

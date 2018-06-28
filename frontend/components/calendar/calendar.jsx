@@ -46,11 +46,12 @@ class Calendar extends React.Component {
                           <EventIndexContainer
                             year={ year }
                             month={ month }
-                            date={ date }/>
+                            date={ date }
+                            view="calendar-view"/>
                         </td>);
           date += 1;
         } else {
-          datesRow.push(<td key={ j }></td>);
+          datesRow.push(<td className="calendar-empty-dates" key={ j }></td>);
         }
 
         if (j === 6 || date > monthLength) dates.push(<tr

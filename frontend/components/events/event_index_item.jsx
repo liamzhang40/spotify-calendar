@@ -16,11 +16,13 @@ class EventIndexItem extends React.Component {
   }
 
   render() {
-    const { year, month, date, event } = this.props;
+    const { year, month, date, event, view } = this.props;
     const timeRange = `${event.start_time.slice(11, 16)} -- ${event.end_time.slice(11, 16)}`;
     return (
       <div onClick={ this.toggleModal }>
         { timeRange }
+        <br />
+        { view === "week-view" ? `Description: ${event.description}` : ""}
         { this.state.visible &&
           <UpdateEventFormContainer
             year={ year }

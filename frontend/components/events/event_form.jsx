@@ -24,7 +24,11 @@ class EventForm extends React.Component {
       end_time: `${year}-${month + 1}-${date}T${end_time.slice(0, 2)}:${end_time.slice(3, 5)}`
     });
 
-    processForm(event).then(() => toggleModal());
+    if (start_time >= end_time) {
+      window.alert('End Time must be later than Start Time');
+    } else {
+      processForm(event).then(() => toggleModal());
+    }
   }
 
   handleClick() {
@@ -34,7 +38,9 @@ class EventForm extends React.Component {
 
   generateTimeOptions() {
     const timeOptions = [];
-    for (let time = "00:00", i = 0; time < "24:00"; i++) {
+    const { start_time, end_time } = this.state;
+
+    for (let time = "00:00", i = 0; time <= "24:00"; i++) {
       timeOptions.push(<option key={ i } value={time}>{time}</option>);
       let hour = parseInt(time.slice(0, 2));
       let min = parseInt(time.slice(3, 5));

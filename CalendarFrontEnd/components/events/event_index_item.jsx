@@ -11,15 +11,20 @@ class EventIndexItem extends React.Component {
     };
 
     this.toggleModal = this.toggleModal.bind(this);
-    this.toggleDetail = this.toggleDetail.bind(this);
+    this.openDetail = this.openDetail.bind(this);
+    this.closeDetail = this.closeDetail.bind(this);
   }
 
   toggleModal() {
     this.setState({modalVisible: !this.state.modalVisible});
   }
+  // having one toggle detail causes rendering bug sometimes
+  openDetail() {
+    this.setState({detailVisible: true});
+  }
 
-  toggleDetail() {
-    this.setState({detailVisible: !this.state.detailVisible});
+  closeDetail() {
+    this.setState({detailVisible: false});
   }
 
   render() {
@@ -27,8 +32,8 @@ class EventIndexItem extends React.Component {
     const timeRange = `${event.start_time.slice(11, 16)} -- ${event.end_time.slice(11, 16)}`;
     return (
       <div onClick={ this.toggleModal }
-        onMouseEnter={ this.toggleDetail }
-        onMouseOut={ this.toggleDetail }>
+        onMouseEnter={ this.openDetail }
+        onMouseOut={ this.closeDetail }>
         { timeRange }
         { view === "calendar-view" &&
           this.state.detailVisible &&

@@ -22,8 +22,14 @@ class WeekView extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.fetchEvents(this.state.year, this.state.month);
+  }
+
   componentWillUpdate(nextProps, nextState) {
-    this.props.fetchEvents(nextState.year, nextState.month);
+    if (nextState.year !== this.state.year || nextState.month !== this.state.month) {
+      this.props.fetchEvents(nextState.year, nextState.month);
+    }
   }
 
   generateTableBody() {
@@ -63,8 +69,8 @@ class WeekView extends React.Component {
         dates.push(<td key={ i }>
                     <EventIndexContainer
                       year={ year }
-                      month={ month }
-                      date={ currentDate }
+                      month={ month + 1 }
+                      date={ currentDate %  dateUtil.daysInMonth[month]}
                       view="week-view"/>
                    </td>);
       }

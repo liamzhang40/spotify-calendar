@@ -77,12 +77,14 @@ td {
 .week-dates .event-item {
   position: absolute;
   width: calc(100% - 10px);
+  z-index: 1;
 }
 
 .calendar-dates .event-item:hover,
 .week-dates .event-item:hover {
   cursor: pointer;
-  background-color: #008ce3
+  background-color: #008ce3;
+  z-index: 2;
 }
 
 .switch-button:hover {
@@ -102,6 +104,7 @@ td {
 
 .week-dates td>div:hover {
   background-color: #9ca6af;
+  z-index: 2;
 }
 
 .time-block {
